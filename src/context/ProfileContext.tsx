@@ -1,6 +1,6 @@
 import { IProfileContext, Profile } from '@/model';
 import { useLocalStorage } from '@mantine/hooks';
-import { ReactNode, createContext, useEffect } from 'react';
+import { ReactNode, createContext } from 'react';
 
 export const ProfileContext = createContext<IProfileContext>(null as any);
 
@@ -28,10 +28,6 @@ export const ProfileContextProvider = ({ children }: ProviderProps) => {
       [key]: value,
     });
   };
-
-  useEffect(() => {
-    setProfileDetails(defaultValue);
-  }, [setProfileDetails]);
 
   return (
     <ProfileContext.Provider value={{ profileDetails, setProperty }}>

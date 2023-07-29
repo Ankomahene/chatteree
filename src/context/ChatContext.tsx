@@ -2,7 +2,7 @@ import { allChatters } from '@/data/all-chatters';
 import { prevMessages, todayMessages } from '@/data/messages';
 import { Chatter, Message } from '@/model';
 import { useLocalStorage } from '@mantine/hooks';
-import { ReactNode, createContext, useEffect } from 'react';
+import { ReactNode, createContext } from 'react';
 
 export interface IChatContext {
   chatDetails: IChatDetails;
@@ -46,10 +46,6 @@ export const ChatContextProvider = ({ children }: ProviderProps) => {
       allChatters: [...chatDetails.allChatters, newChatter],
     });
   };
-
-  useEffect(() => {
-    setChatDetails(defaultValue);
-  }, [setChatDetails]);
 
   return (
     <ChatContext.Provider value={{ chatDetails, addMessage, addChatter }}>
